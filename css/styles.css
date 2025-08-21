@@ -14,19 +14,6 @@ a { color: inherit; text-decoration: none; }
 /* Contenitore tipo telefono */
 .phone-frame { max-width: 520px; margin: 0 auto; background: #000; }
 
-/* ===== Header brand (logo) ===== */
-.brand { background:#000; padding:10px 14px 0; }
-.brand-logo{
-  display:block;
-  margin:4px auto 10px;
-  max-width:92%;
-  max-height:140px;     /* regola se lo vuoi più grande/piccolo */
-  width:auto; height:auto;
-  object-fit:contain;
-  border:0; box-shadow:none;
-}
-.brand-sep{ height:1px; background:rgba(255,255,255,.15); margin:0 0 8px; }
-
 /* =======================
    HOME – tile con foto
 ======================= */
@@ -34,13 +21,14 @@ a { color: inherit; text-decoration: none; }
 
 a.tile, a.tile:visited {
   position: relative; display: block; width: 100%;
-  aspect-ratio: 16/9;                 /* proporzione "video" */
-  height: clamp(200px, 52vw, 420px);  /* fallback compatibilità */
+  aspect-ratio: 16/9;
+  height: clamp(200px, 52vw, 420px);
   overflow: hidden; color: inherit; border-radius: 0;
   border: 1px solid rgba(255,255,255,.25);
   background: #000;
 }
 
+/* immagine */
 .tile img.photo {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; display: block;
@@ -48,7 +36,7 @@ a.tile, a.tile:visited {
   transform: scale(1.02);
 }
 
-/* ombre e bande scure sopra/sotto come nel video */
+/* ombre */
 .tile::before {
   content: "";
   position: absolute; inset: 0;
@@ -68,45 +56,89 @@ a.tile, a.tile:visited {
   text-shadow: 0 2px 0 rgba(0,0,0,.65), 0 0 18px rgba(0,0,0,.65);
   text-align: center; line-height: 1.05;
 }
-.tile h3 .line { display: block; }     /* per scritte su due/tre righe */
+.tile h3 .line { display: block; }
 
 .tile:active { transform: scale(.995); }
 .tile:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
+
+/* ---- LOGO come tile ---- */
+.tile--logo::before { content: none; } /* niente overlay scuro sul logo */
+.tile--logo .photo{
+  object-fit: contain;                 /* intero logo visibile */
+  transform: none; filter: none;
+  /* rimpicciolito con margine interno */
+  position: absolute;
+  top: 6%; right: 6%; bottom: 6%; left: 6%;
+  width: auto; height: auto;
+  background: transparent;
+}
 
 /* =======================
    Navigazione senza JS
 ======================= */
 .view { display: none; }
-#home.view.default { display: block; }              /* home di default */
-:target.view { display: block; }                    /* mostra la sezione targettata */
-:target.view ~ #home.view.default { display: none; }/* nasconde la home quando apri un dettaglio */
+#home.view.default { display: block; }
+:target.view { display: block; }
+:target.view ~ #home.view.default { display: none; }
 
 /* ==============================================
    DETTAGLIO – Tema scuro con vite traslucida
-   (vale per Antipasti e tutte le altre categorie)
 ============================================== */
 .detail{
   background:#000; color:#fff;
-  min-height:100dvh;                  /* altezza minima viewport */
-  position:relative;                  /* per il watermark */
+  min-height:100dvh;
+  position:relative;
 }
-
-/* Watermark "vite" che segue tutta la pagina */
 .detail::before{
   content:"";
   position:absolute; inset:0;
-  background-image:url("../img/vite.png");   /* usa .jpg se l'hai salvata jpg */
-  background-repeat:repeat-y;                /* ripeti in verticale */
-  background-position:center 72px;           /* parte sotto l'header */
-  background-size:min(520px,95%);            /* proporzione coerente con frame */
-  opacity:.10;                                /* intensità del watermark */
-  filter: invert(1) brightness(.9) contrast(.9); /* rende la vite chiara sul nero */
+  background-image:url("../img/vite.png"); /* cambia in .jpg se serve */
+  background-repeat:repeat-y;
+  background-position:center 72px;
+  background-size:min(520px,95%);
+  opacity:.10;
+  filter: invert(1) brightness(.9) contrast(.9);
   pointer-events:none;
   z-index:0;
 }
-
-/* contenuti sopra il watermark */
 .detail .detail-wrap,
 .detail .detail-header{ position:relative; z-index:1; }
 
-/* Header sticky scuro */
+.detail .detail-wrap{ padding:16px; }
+.detail-header{
+  position:sticky; top:0;
+  display:flex; align-items:center; gap:12px;
+  background:rgba(0,0,0,.85);
+  -webkit-backdrop-filter:saturate(180%) blur(6px);
+  backdrop-filter:saturate(180%) blur(6px);
+  border-bottom:1px solid rgba(255,255,255,.10);
+  margin:-16px -16px 12px;
+  padding:12px 16px;
+}
+.detail-header h1{
+  margin:0; color:#fff;
+  font-size:clamp(22px,4.8vw,30px);
+  text-transform:uppercase; font-style:italic; letter-spacing:1px;
+}
+.detail-header .back{
+  color:#fff;
+  border:1px solid rgba(255,255,255,.25);
+  padding:8px 12px; border-radius:999px;
+}
+.detail-header .back:focus-visible{
+  outline:2px solid rgba(255,255,255,.45); outline-offset:2px;
+}
+
+/* Elenco “piatto” sul nero */
+.menu-list{
+  list-style:none; padding:0; margin:4px 0 24px;
+  background:transparent; border:0; border-radius:0;
+}
+.menu-list li{
+  display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center;
+  padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.menu-list li:last-child{ border-bottom:0; }
+.menu-list .name{ font-weight:800; letter-spacing:.2px; color:#fff; }
+.menu-list .price{ font-weight:900; color:#fff; }
