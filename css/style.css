@@ -1,24 +1,34 @@
-/* ====== Reset & base ====== */
+/* =======================
+   Reset & base
+======================= */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { height: 100%; overflow-x: hidden; }
-body { margin: 0; background: #000; color: #fff; font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+body {
+  margin: 0;
+  background: #000;               /* sfondo home */
+  color: #fff;
+  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
 a { color: inherit; text-decoration: none; }
 
-/* Contenitore centrale tipo telefono */
+/* Contenitore tipo telefono */
 .phone-frame { max-width: 520px; margin: 0 auto; background: #000; }
 
-/* ====== HOME (tile con foto + titolo centrale) ====== */
+/* =======================
+   HOME – tile con foto
+======================= */
 .stack { display: flex; flex-direction: column; gap: 14px; padding: 14px; }
 
 a.tile, a.tile:visited {
   position: relative; display: block; width: 100%;
-  aspect-ratio: 16/9;                          /* proporzione stile video */
-  height: clamp(200px, 52vw, 420px);           /* fallback compatibilità */
+  aspect-ratio: 16/9;                 /* proporzione "video" */
+  height: clamp(200px, 52vw, 420px);  /* fallback compatibilità */
   overflow: hidden; color: inherit; border-radius: 0;
   border: 1px solid rgba(255,255,255,.25);
   background: #000;
 }
 
+/* immagine */
 .tile img.photo {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; display: block;
@@ -26,6 +36,7 @@ a.tile, a.tile:visited {
   transform: scale(1.02);
 }
 
+/* ombre e bande scure sopra/sotto come nel video */
 .tile::before {
   content: "";
   position: absolute; inset: 0;
@@ -36,6 +47,7 @@ a.tile, a.tile:visited {
   pointer-events: none;
 }
 
+/* Titolo centrale */
 .tile h3 {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   margin: 0; padding: 0 8px; text-transform: uppercase; font-style: italic;
@@ -44,34 +56,39 @@ a.tile, a.tile:visited {
   text-shadow: 0 2px 0 rgba(0,0,0,.65), 0 0 18px rgba(0,0,0,.65);
   text-align: center; line-height: 1.05;
 }
-.tile h3 .line { display: block; }
+.tile h3 .line { display: block; }     /* per scritte su due/tre righe */
 
 .tile:active { transform: scale(.995); }
 .tile:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
 
-/* ====== Navigazione a sezioni senza JS ====== */
+/* =======================
+   Navigazione senza JS
+======================= */
 .view { display: none; }
-#home.view.default { display: block; }        /* home di default */
-:target.view { display: block; }              /* quando targettata, mostra la sezione */
-:target.view ~ #home.view.default { display: none; } /* nasconde la home quando apri un dettaglio */
+#home.view.default { display: block; }              /* home di default */
+:target.view { display: block; }                    /* mostra la sezione targettata */
+:target.view ~ #home.view.default { display: none; }/* nasconde la home quando apri un dettaglio */
 
-/* ====== DETTAGLIO – tema scuro con vite traslucida ====== */
+/* ==============================================
+   DETTAGLIO – Tema scuro con vite traslucida
+   (vale per Antipasti e tutte le altre categorie)
+============================================== */
 .detail{
   background:#000; color:#fff;
-  min-height:100dvh;
-  position:relative;                 /* serve per l'overlay */
+  min-height:100dvh;                  /* altezza minima viewport */
+  position:relative;                  /* per il watermark */
 }
 
-/* watermark: rende chiara la vite anche se è nera su fondo bianco */
+/* Watermark "vite" che segue tutta la pagina */
 .detail::before{
   content:"";
   position:absolute; inset:0;
   background-image:url("../img/vite.png");   /* usa .jpg se l'hai salvata jpg */
-  background-repeat:repeat-y;                /* si ripete in verticale */
-  background-position:center 72px;           /* parte sotto l'header sticky */
-  background-size:min(520px,95%);            /* dimensione coerente col frame */
-  opacity:.10;                                /* intensità (0.06–0.14 consigliato) */
-  filter: invert(1) brightness(.9) contrast(.9);
+  background-repeat:repeat-y;                /* ripeti in verticale */
+  background-position:center 72px;           /* parte sotto l'header */
+  background-size:min(520px,95%);            /* proporzione coerente con frame */
+  opacity:.10;                                /* intensità del watermark */
+  filter: invert(1) brightness(.9) contrast(.9); /* rende la vite chiara sul nero */
   pointer-events:none;
   z-index:0;
 }
@@ -80,7 +97,7 @@ a.tile, a.tile:visited {
 .detail .detail-wrap,
 .detail .detail-header{ position:relative; z-index:1; }
 
-/* header sticky scuro */
+/* Header sticky scuro */
 .detail .detail-wrap{ padding:16px; }
 .detail-header{
   position:sticky; top:0;
@@ -88,8 +105,8 @@ a.tile, a.tile:visited {
   background:rgba(0,0,0,.85);
   -webkit-backdrop-filter:saturate(180%) blur(6px);
   backdrop-filter:saturate(180%) blur(6px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  margin:-16px -16px 12px;     /* a tutta larghezza */
+  border-bottom:1px solid rgba(255,255,255,.10);
+  margin:-16px -16px 12px;   /* a tutta larghezza */
   padding:12px 16px;
 }
 .detail-header h1{
@@ -98,7 +115,7 @@ a.tile, a.tile:visited {
   text-transform:uppercase; font-style:italic; letter-spacing:1px;
 }
 .detail-header .back{
-  color:#fff; background:transparent;
+  color:#fff;
   border:1px solid rgba(255,255,255,.25);
   padding:8px 12px; border-radius:999px;
 }
@@ -106,7 +123,7 @@ a.tile, a.tile:visited {
   outline:2px solid rgba(255,255,255,.45); outline-offset:2px;
 }
 
-/* ====== Elenco "piatto" sullo sfondo nero ====== */
+/* Elenco “piatto” direttamente sullo sfondo nero */
 .menu-list{
   list-style:none; padding:0; margin:4px 0 24px;
   background:transparent; border:0; border-radius:0;
@@ -119,5 +136,3 @@ a.tile, a.tile:visited {
 .menu-list li:last-child{ border-bottom:0; }
 .menu-list .name{ font-weight:800; letter-spacing:.2px; color:#fff; }
 .menu-list .price{ font-weight:900; color:#fff; }
-
-
