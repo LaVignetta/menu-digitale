@@ -15,7 +15,10 @@
 </head>
 <body>
   <main class="phone-frame">
-    <!-- Pagina dettaglio: Antipasti -->
+
+    <!-- PAGINE DETTAGLIO (restano sopra la home per la regola :target) -->
+
+    <!-- Antipasti -->
     <section id="antipasti" class="view detail" aria-labelledby="tit-antipasti">
       <div class="detail-wrap">
         <header class="detail-header">
@@ -29,7 +32,7 @@
       </div>
     </section>
 
-    <!-- Pagina dettaglio: Pizze Bianche -->
+    <!-- Pizze Bianche -->
     <section id="pizze-bianche" class="view detail" aria-labelledby="tit-pizze-bianche">
       <div class="detail-wrap">
         <header class="detail-header">
@@ -38,22 +41,25 @@
         </header>
         <ul class="menu-list">
           <li><span class="name">Bianca radicchio e gorgonzola</span><span class="price">€10,00</span></li>
-          <li><span class="name">Bianca stracciatella mortadella e granella di pistaccio</span><span class="price">€12,00</span></li>
-          <li><span class="name">Bianca zucca salsiccia</span><span class="price">€10,00</span></li>
+          <li><span class="name">Bianca stracciatella, mortadella e granella di pistacchio</span><span class="price">€12,00</span></li>
+          <li><span class="name">Bianca zucca e salsiccia</span><span class="price">€10,00</span></li>
         </ul>
       </div>
     </section>
 
-    <!-- Home: elenco categorie con foto (immagini locali) -->
+    <!-- HEADER LOGO (fuori dalle tile) -->
+    <header class="brand">
+      <img class="brand-logo" src="img/logo.jpg" alt="La Vignetta">
+      <div class="brand-sep" aria-hidden="true"></div>
+    </header>
+
+    <!-- HOME -->
     <section id="home" class="view default" aria-label="Categorie">
       <div class="stack">
-        <a class="tile" href="#logo">
-        <img class="photo" src="img/logo.jpg" alt="Logo">
-        </a>
-        
+
         <a class="tile" href="#bevande">
-        <img class="photo" src="img/bevande.jpg" alt="Bevande">
-        <h3>Bevande</h3>
+          <img class="photo" src="img/bevande.jpg" alt="Bevande">
+          <h3>Bevande</h3>
         </a>
 
         <a class="tile" href="#antipasti">
@@ -102,14 +108,14 @@
         </a>
 
         <a class="tile" href="#caffe-e-amari">
-          <img class="photo" src="img/caffe-e-amari.jpg" alt="Caffe e amari">
-          <h3><span class="line">Caffe</span><span class="line">e</span><span class="line">Amari</span></h3>
+          <img class="photo" src="img/caffe-e-amari.jpg" alt="Caffè e amari">
+          <h3><span class="line">Caffè</span><span class="line">e</span><span class="line">Amari</span></h3>
         </a>
+
       </div>
     </section>
   </main>
 
-  <!-- JS opzionale -->
   <script src="js/app.js"></script>
 </body>
 </html>
