@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu – Home</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="phone-frame">
+    <!-- Pagina dettaglio: Antipasti -->
+    <section id="antipasti" class="view detail" aria-labelledby="tit-antipasti">
+      <div class="detail-wrap">
+        <header class="detail-header">
+          <a class="back" href="#home" aria-label="Torna alle categorie">← Torna alle categorie</a>
+          <h1 id="tit-antipasti">Antipasti</h1>
+        </header>
+        <ul class="menu-list">
+          <li><span class="name">Supplì classico</span><span class="price">€2,00</span></li>
+          <li><span class="name">Supplì cacio e pepe</span><span class="price">€2,00</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pagina dettaglio: Pizze Bianche -->
+    <section id="pizze-bianche" class="view detail" aria-labelledby="tit-pizze-bianche">
+      <div class="detail-wrap">
+        <header class="detail-header">
+          <a class="back" href="#home" aria-label="Torna alle categorie">← Torna alle categorie</a>
+          <h1 id="tit-pizze-bianche">Pizze Bianche</h1>
+        </header>
+        <ul class="menu-list">
+          <li><span class="name">Bianca radicchio e gorgonzola</span><span class="price">€10,00</span></li>
+          <li><span class="name">Bianca stracciatella mortadella e granella di pistaccio</span><span class="price">€12,00</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Home: elenco categorie con foto (immagini locali) -->
+    <section id="home" class="view default" aria-label="Categorie">
+      <div class="stack">
+        <a class="tile" href="#bevande">
+        <img class="photo" src="img/bevande.jpg" alt="Bevande">
+        <h3>Bevande</h3>
+        </a>
+
+        <a class="tile" href="#antipasti">
+          <img class="photo" src="img/antipasti.jpg" alt="Antipasti">
+          <h3>Antipasti</h3>
+        </a>
+
+        <a class="tile" href="#focacce">
+          <img class="photo" src="img/focacce.jpg" alt="Focacce">
+          <h3>Focacce</h3>
+        </a>
+
+        <a class="tile" href="#pizze-bianche">
+          <img class="photo" src="img/pizze-bianche.jpg" alt="Pizza bianca">
+          <h3><span class="line">Pizza</span><span class="line">Bianca</span></h3>
+        </a>
+
+        <a class="tile" href="#calzoni">
+          <img class="photo" src="img/calzoni.jpg" alt="Calzoni">
+          <h3>Calzoni</h3>
+        </a>
+
+        <a class="tile" href="#pizze-rosse">
+          <img class="photo" src="img/pizze-rosse.jpg" alt="Pizza rossa">
+          <h3><span class="line">Pizza</span><span class="line">Rossa</span></h3>
+        </a>
+
+        <a class="tile" href="#pizze-margherita">
+          <img class="photo" src="img/pizze-margherita.jpg" alt="Pizza margherita">
+          <h3><span class="line">Pizza</span><span class="line">Margherita</span></h3>
+        </a>
+
+        <a class="tile" href="#secondi">
+          <img class="photo" src="img/secondi.jpg" alt="Secondi">
+          <h3>Secondi</h3>
+        </a>
+
+        <a class="tile" href="#contorni">
+          <img class="photo" src="img/contorni.jpg" alt="Contorni">
+          <h3>Contorni</h3>
+        </a>
+
+        <a class="tile" href="#dolci">
+          <img class="photo" src="img/dolci.jpg" alt="Dolci">
+          <h3>Dolci</h3>
+        </a>
+
+        <a class="tile" href="#caffe-e-amari">
+          <img class="photo" src="img/caffe-e-amari.jpg" alt="Caffe e amari">
+          <h3><span class="line">Caffe</span><span class="line">e</span><span class="line">Amari</span></h3>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS opzionale -->
+  <script src="js/app.js"></script>
+</body>
+</html>
