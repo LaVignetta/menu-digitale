@@ -5,20 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Menu – Home</title>
 
-  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <main class="phone-frame">
-
-    <!-- PAGINE DETTAGLIO (restano sopra la home per la regola :target) -->
-
-    <!-- Antipasti -->
+    <!-- DETTAGLI -->
     <section id="antipasti" class="view detail" aria-labelledby="tit-antipasti">
       <div class="detail-wrap">
         <header class="detail-header">
@@ -32,7 +27,6 @@
       </div>
     </section>
 
-    <!-- Pizze Bianche -->
     <section id="pizze-bianche" class="view detail" aria-labelledby="tit-pizze-bianche">
       <div class="detail-wrap">
         <header class="detail-header">
@@ -47,15 +41,14 @@
       </div>
     </section>
 
-    <!-- HEADER LOGO (fuori dalle tile) -->
-    <header class="brand">
-      <img class="brand-logo" src="img/logo.jpg" alt="La Vignetta">
-      <div class="brand-sep" aria-hidden="true"></div>
-    </header>
-
     <!-- HOME -->
     <section id="home" class="view default" aria-label="Categorie">
       <div class="stack">
+
+        <!-- LOGO come tile (clic non cambia pagina) -->
+        <a class="tile tile--logo" href="#home" aria-label="La Vignetta">
+          <img class="photo" src="img/logo.jpg" alt="La Vignetta">
+        </a>
 
         <a class="tile" href="#bevande">
           <img class="photo" src="img/bevande.jpg" alt="Bevande">
