@@ -38,7 +38,7 @@ a.tile, a.tile:visited {
 
 .tile img.logo {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  object-fit: contain; display: block;
   filter: contrast(1.05) saturate(1.05) brightness(.92);
   transform: none;
 }
