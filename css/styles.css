@@ -38,7 +38,7 @@ a.tile, a.tile:visited {
 
 .tile img.logo {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  object-fit: contain; display: block;
   filter: contrast(1.05) saturate(1.05) brightness(.92);
   transform: none;
 }
@@ -67,18 +67,6 @@ a.tile, a.tile:visited {
 
 .tile:active { transform: scale(.995); }
 .tile:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
-
-/* ---- LOGO come tile ---- */
-.tile--logo::before { content: none; } /* niente overlay scuro sul logo */
-.tile--logo .photo{
-  object-fit: contain;                 /* intero logo visibile */
-  transform: none; filter: none;
-  /* rimpicciolito con margine interno */
-  position: absolute;
-  top: 6%; right: 6%; bottom: 6%; left: 6%;
-  width: auto; height: auto;
-  background: transparent;
-}
 
 /* =======================
    Navigazione senza JS
