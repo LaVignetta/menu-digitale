@@ -28,22 +28,15 @@ a.tile, a.tile:visited {
   background: #000;
 }
 
-/* immagine */
-.tile img.photo {
+/* immagine generica delle tile */
+.tile .photo {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; display: block;
   filter: contrast(1.05) saturate(1.05) brightness(.92);
   transform: scale(1.02);
 }
 
-.tile img.logo {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: contain; display: block;
-  filter: contrast(1.05) saturate(1.05) brightness(.92);
-  transform: none;
-}
-
-/* ombre */
+/* ombre sulle tile */
 .tile::before {
   content: "";
   position: absolute; inset: 0;
@@ -54,7 +47,7 @@ a.tile, a.tile:visited {
   pointer-events: none;
 }
 
-/* Titolo centrale */
+/* Titolo centrale nelle tile */
 .tile h3 {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   margin: 0; padding: 0 8px; text-transform: uppercase; font-style: italic;
@@ -67,6 +60,16 @@ a.tile, a.tile:visited {
 
 .tile:active { transform: scale(.995); }
 .tile:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
+
+/* ---- LOGO come tile dedicata ---- */
+.tile--logo::before { content: none; }   /* niente overlay scuro sul logo */
+.tile--logo .logo{
+  position: absolute;
+  inset: 6%;                 /* margine interno: riduce leggermente il logo */
+  width: auto; height: auto;
+  object-fit: contain;       /* mostra tutto il logo */
+  transform: none; filter: none; background: transparent;
+}
 
 /* =======================
    Navigazione senza JS
@@ -84,21 +87,26 @@ a.tile, a.tile:visited {
   min-height:100dvh;
   position:relative;
 }
+
+/* Watermark "vite" che segue tutta la pagina */
 .detail::before{
   content:"";
   position:absolute; inset:0;
-  background-image:url("../img/vite.png"); /* cambia in .jpg se serve */
+  background-image:url("../img/vite.png");   /* cambia in .jpg se serve */
   background-repeat:repeat-y;
-  background-position:center 72px;
+  background-position:center 72px;           /* parte sotto l'header */
   background-size:min(520px,95%);
   opacity:.10;
-  filter: invert(1) brightness(.9) contrast(.9);
+  filter: invert(1) brightness(.9) contrast(.9); /* rende la vite chiara sul nero */
   pointer-events:none;
   z-index:0;
 }
+
+/* contenuti sopra il watermark */
 .detail .detail-wrap,
 .detail .detail-header{ position:relative; z-index:1; }
 
+/* Header sticky scuro */
 .detail .detail-wrap{ padding:16px; }
 .detail-header{
   position:sticky; top:0;
