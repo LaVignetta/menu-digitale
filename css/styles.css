@@ -41,7 +41,7 @@ a.tile, a.tile:visited {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: contain; display: block;
   filter: contrast(1.05) saturate(1.05) brightness(.92);
-  transform: none;
+  transform: scale(1.02);
 }
 
 /* ombre */
