@@ -98,7 +98,7 @@ a.tile, a.tile:visited {
 .detail::before{
   content:"";
   position:absolute; inset:0;
-  background-image:url("../img/vite.png"); /* cambia in .jpg se serve */
+  background-image:url("../img/foglie.jpg"); /* cambia in .jpg se serve */
   background-repeat:repeat-y;
   background-position:center 72px;
   background-size:min(520px,95%);
