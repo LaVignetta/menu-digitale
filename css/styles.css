@@ -36,11 +36,12 @@ a.tile, a.tile:visited {
   transform: scale(1.02);
 }
 
+/* logo (se lo usi come tile) */
 .tile img.logo {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  object-fit: contain; display: block;
   filter: contrast(1.05) saturate(1.05) brightness(.92);
-  transform: scale(1.02);
+  transform: none;
 }
 
 /* ombre */
@@ -68,16 +69,14 @@ a.tile, a.tile:visited {
 .tile:active { transform: scale(.995); }
 .tile:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
 
-/* ---- LOGO come tile ---- */
-.tile--logo::before { content: none; } /* niente overlay scuro sul logo */
-.tile--logo .photo{
-  object-fit: contain;                 /* intero logo visibile */
-  transform: none; filter: none;
-  /* rimpicciolito con margine interno */
+/* ---- LOGO come tile (opzionale margine interno) ---- */
+.tile--logo::before { content: none; }
+.tile--logo .logo{
   position: absolute;
-  top: 6%; right: 6%; bottom: 6%; left: 6%;
+  inset: 6%;
   width: auto; height: auto;
-  background: transparent;
+  object-fit: contain;
+  transform: none; filter: none; background: transparent;
 }
 
 /* =======================
@@ -149,3 +148,34 @@ a.tile, a.tile:visited {
 .menu-list li:last-child{ border-bottom:0; }
 .menu-list .name{ font-weight:800; letter-spacing:.2px; color:#fff; }
 .menu-list .price{ font-weight:900; color:#fff; }
+
+/* ====== Sottoschede (pills) Bevande ====== */
+.subtabs{
+  display:flex; gap:8px;
+  padding: 2px 0 10px;
+  margin: 2px 0 12px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+}
+.subtabs::-webkit-scrollbar{ display:none; }
+
+.tab{
+  display:inline-block;
+  padding: 8px 12px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  font-weight:800; letter-spacing:.3px;
+  background: transparent;
+  color:#fff;
+  white-space: nowrap;
+}
+.tab:focus-visible{ outline:2px solid rgba(255,255,255,.45); outline-offset:2px; }
+
+.tab.active{
+  background:#fff;
+  color:#000;
+  border-color:#fff;
+}
+
+/* Piccolo distacco lista nelle bevande */
+.bevande .menu-list{ margin-top: 4px; }
